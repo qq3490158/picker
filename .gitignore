@@ -1,1 +1,3 @@
 deploy.sh
+set-lock.py
+set-lock.sh
