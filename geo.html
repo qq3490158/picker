@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>定位中</title>
+<style>
+html,body{margin:0;padding:0;background:#f5f6fa;display:flex;align-items:center;justify-content:center;height:100vh;font-family:-apple-system,sans-serif;color:#333;font-size:14px}
+</style>
+</head>
+<body><div id="msg">正在获取位置…</div>
+<script>
+function done(msg){
+  try { document.getElementById('msg').textContent = msg.text || '完成'; } catch(e){}
+  try { if (window.opener) window.opener.postMessage(msg, '*'); } catch(e){}
+  try { setTimeout(function(){ window.close(); }, 400); } catch(e){}
+}
+if (!window.opener) {
+  document.getElementById('msg').textContent = '请从主页面打开定位';
+} else if (!navigator.geolocation) {
+  done({type:'wloc_geo', error:'unsupported'});
+} else {
+  navigator.geolocation.getCurrentPosition(
+    function(p){ done({type:'wloc_geo', lat:p.coords.latitude, lon:p.coords.longitude}); },
+    function(e){ done({type:'wloc_geo', error:(e&&e.code)||'unknown'}); },
+    { enableHighAccuracy:true, timeout:12000, maximumAge:0 }
+  );
+}
+</script>
+</body>
+</html>
