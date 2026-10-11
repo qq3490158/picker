@@ -30,50 +30,68 @@ body{min-height:100vh;-webkit-user-select:none;user-select:none;-webkit-touch-ca
 </style>
 
 <style>
-/* ===== 验证码访问门禁（新增，不动原页面样式） ===== */
+/* ===== 验证码访问门禁（v2 美化版） ===== */
 #captchaGate{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;
-  background:linear-gradient(180deg,#EAF3FF 0%,#F7FBFF 60%,#FFFFFF 100%);
-  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;-webkit-user-select:none;user-select:none}
-#captchaGate .c-box{background:#fff;border-radius:24px;padding:34px 28px 28px;max-width:420px;width:100%;
-  box-shadow:0 24px 70px rgba(31,87,158,.16);text-align:center;position:relative}
-#captchaGate .c-badge{width:56px;height:56px;margin:0 auto 14px;border-radius:18px;background:linear-gradient(135deg,#3E9BFF,#2F7CF6);
-  display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;box-shadow:0 8px 20px rgba(62,155,255,.35)}
-#captchaGate .c-en{font-size:11px;letter-spacing:3px;color:#9BB2CC;font-weight:600;margin-bottom:4px}
-#captchaGate h2{margin:0 0 8px;font-size:22px;color:#14243B;font-weight:700}
-#captchaGate .c-desc{font-size:13px;color:#5F7390;line-height:1.7;margin:0 0 4px}
-#captchaGate .c-tip{font-size:12px;color:#8CA2BE;margin:0 0 18px}
-#captchaGate .c-label{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#5F7390;margin-bottom:10px}
-#captchaGate .c-refresh{color:#3E9BFF;cursor:pointer;font-size:12px;user-select:none;display:flex;align-items:center;gap:4px}
-#captchaGate .c-codes{display:flex;justify-content:center;gap:14px;margin-bottom:22px}
-#captchaGate .c-code{width:54px;height:64px;border-radius:14px;background:linear-gradient(180deg,#F2F8FF,#E7F1FF);
-  border:1px solid #D9E8FB;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#1F5FD9}
-#captchaGate .c-input{width:100%;padding:13px;font-size:20px;text-align:center;letter-spacing:8px;border:2px solid #DCE7F5;border-radius:14px;outline:none;background:#F8FBFF;box-sizing:border-box;-webkit-user-select:text;user-select:text}
-#captchaGate .c-input:focus{border-color:#3E9BFF;background:#fff}
-#captchaGate .c-err{color:#FF4D4F;font-size:13px;min-height:18px;margin:8px 0 0}
-#captchaGate .c-btns{display:flex;gap:12px;margin-top:12px}
-#captchaGate .c-btn{flex:1;padding:14px;border-radius:14px;font-size:16px;font-weight:600;cursor:pointer;border:0;font-family:inherit}
-#captchaGate .c-btn-main{background:#3E9BFF;color:#fff}
-#captchaGate .c-btn-main:active{opacity:.85}
-#captchaGate .c-btn-ghost{background:#fff;color:#3E9BFF;border:1.5px solid #3E9BFF}
-#captchaGate .c-foot{font-size:12px;color:#8CA2BE;margin-top:18px}
+  background:linear-gradient(160deg,#E8F1FF 0%,#F5F9FF 45%,#FFFFFF 100%);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  -webkit-user-select:none;user-select:none;overflow:hidden}
+#captchaGate::before{content:'';position:absolute;width:440px;height:440px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(91,162,255,.16),transparent 70%);top:-150px;right:-130px}
+#captchaGate::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(122,190,255,.12),transparent 70%);bottom:-160px;left:-120px}
+#captchaGate .c-box{position:relative;background:#fff;border-radius:28px;padding:40px 30px 32px;max-width:400px;width:100%;
+  box-shadow:0 30px 80px rgba(45,110,190,.14),0 2px 8px rgba(45,110,190,.06);border:1px solid rgba(220,234,255,.8);text-align:center}
+#captchaGate .c-badge{width:60px;height:60px;margin:0 auto 16px;border-radius:20px;position:relative;
+  background:linear-gradient(135deg,#4DA8FF,#2F7CF6);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(62,155,255,.35)}
+#captchaGate .c-badge svg{width:30px;height:30px}
+#captchaGate .c-en{font-size:11px;letter-spacing:4px;color:#9DB4D0;font-weight:600;margin-bottom:6px}
+#captchaGate h2{margin:0 0 10px;font-size:23px;color:#122A4D;font-weight:700;letter-spacing:1px}
+#captchaGate .c-desc{font-size:13px;color:#5E7596;line-height:1.8;margin:0 0 2px}
+#captchaGate .c-tip{font-size:12px;color:#93AAC8;margin:0 0 22px}
+#captchaGate .c-label{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:#5E7596;font-weight:500;margin-bottom:12px}
+#captchaGate .c-refresh{color:#3E9BFF;cursor:pointer;font-size:12.5px;display:flex;align-items:center;gap:5px;transition:opacity .15s}
+#captchaGate .c-refresh:hover{opacity:.75}
+#captchaGate .c-codes{display:flex;justify-content:center;gap:12px;margin-bottom:24px}
+#captchaGate .c-code{width:58px;height:66px;border-radius:16px;
+  background:linear-gradient(180deg,#F4F9FF,#EAF3FE);border:1px solid #D8E8FB;
+  box-shadow:inset 0 1px 3px rgba(90,140,200,.08),0 2px 6px rgba(90,140,200,.06);
+  display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:700;color:#1F5FD9}
+#captchaGate .c-input{width:100%;padding:14px;font-size:22px;text-align:center;letter-spacing:10px;
+  border:2px solid #E1EBF7;border-radius:16px;outline:none;background:#F8FBFF;box-sizing:border-box;
+  color:#122A4D;font-weight:600;-webkit-user-select:text;user-select:text;transition:border-color .2s,background .2s,box-shadow .2s}
+#captchaGate .c-input:focus{border-color:#3E9BFF;background:#fff;box-shadow:0 0 0 4px rgba(62,155,255,.12)}
+#captchaGate .c-input::placeholder{color:#B4C6DC;font-weight:400;letter-spacing:2px}
+#captchaGate .c-err{color:#FF4D4F;font-size:13px;min-height:20px;margin:10px 0 0}
+#captchaGate .c-btn-row{margin-top:16px}
+#captchaGate .c-main-btn{width:100%;padding:15px;border-radius:16px;font-size:16.5px;font-weight:600;cursor:pointer;border:0;
+  background:linear-gradient(135deg,#4DA8FF,#2F7CF6);color:#fff;font-family:inherit;letter-spacing:2px;
+  box-shadow:0 10px 24px rgba(62,155,255,.35);transition:transform .12s,box-shadow .2s,opacity .2s}
+#captchaGate .c-main-btn:hover{box-shadow:0 14px 30px rgba(62,155,255,.42)}
+#captchaGate .c-main-btn:active{transform:scale(.98);opacity:.92}
+#captchaGate .c-foot{font-size:12px;color:#93AAC8;margin-top:20px;letter-spacing:.5px}
 </style>
 </head>
 <body>
 
 <div id="captchaGate">
   <div class="c-box">
-    <div class="c-badge">🔒</div>
+    <div class="c-badge">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L20 5V11C20 16.5 16.6 20.7 12 22C7.4 20.7 4 16.5 4 11V5L12 2Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M8.5 11.5L11 14L15.5 9" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
     <div class="c-en">VERIFY ACCESS</div>
     <h2>验证码访问</h2>
-    <p class="c-desc">打开页面后请先核对下方4位数字验证码，手动输入正确后才可继续访问。</p>
-    <p class="c-tip">验证码每次刷新都会重新生成，输入错误时系统会要求重新校验。</p>
+    <p class="c-desc">请核对下方4位数字验证码，输入正确后才可继续访问</p>
+    <p class="c-tip">验证码每次刷新都会重新生成，输入错误需重新校验</p>
     <div class="c-label"><span>当前验证码</span><span class="c-refresh" onclick="capRefresh()">↻ 刷新验证码</span></div>
     <div class="c-codes" id="capCodes"></div>
     <input class="c-input" id="capInput" inputmode="numeric" maxlength="4" placeholder="请输入 4 位验证码" autocomplete="off">
     <div class="c-err" id="capErr"></div>
-    <div class="c-btns">
-      <button class="c-btn c-btn-main" onclick="capCheck()">验证并继续访问</button>
-      <button class="c-btn c-btn-ghost" onclick="capRefresh()">重新生成</button>
+    <div class="c-btn-row">
+      <button class="c-main-btn" onclick="capCheck()">验证并继续访问</button>
     </div>
     <p class="c-foot">验证通过后将自动进入应用页面</p>
   </div>
