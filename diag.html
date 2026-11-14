@@ -23,7 +23,7 @@ button.alt{background:#2a3340;color:#e9edf3}
 <div id="meta" class="row meta"></div>
 <div id="out"></div>
 <script>
-var API = 'https://gs-loc.apple.com/ils-settings/save';
+var API = 'https://gs-loc.apple.com/wloc-settings/save';
 var LAT = 30.513168, LON = 117.031338, ALT = 45;
 var out = document.getElementById('out');
 function add(k, v, cls) {
@@ -90,7 +90,7 @@ function mark(hacc) {
   var u = API + '?lon=' + LON + '&lat=' + LAT + '&alt=' + ALT +
           '&hacc=' + hacc + '&vacc=1000&randomRadius=0&_=' + Date.now();
   fetch(u, { method: 'GET', mode: 'no-cors', cache: 'no-store' }).then(function () {
-    alert('已发送标记 hacc=' + hacc + '\n\n现在在 Safari 打开：\nhttps://gs-loc.apple.com/ils-settings/save?action=query\n\n看 horizontalAccuracy 是不是 ' + hacc);
+    alert('已发送标记 hacc=' + hacc + '\n\n现在在 Safari 打开：\nhttps://gs-loc.apple.com/wloc-settings/save?action=query\n\n看 horizontalAccuracy 是不是 ' + hacc);
   }).catch(function (e) { alert('发送失败: ' + e.message); });
 }
 run();

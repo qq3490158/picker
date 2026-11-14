@@ -1,7 +1,7 @@
 /*
  * location-settings.js — stateless save-interceptor for iOS Location Spoofer.
  *
- * Runs as an http-REQUEST script on gs-loc.apple.com/ils-settings/… and answers the
+ * Runs as an http-REQUEST script on gs-loc.apple.com/wloc-settings/… and answers the
  * request itself (never hits Apple). It writes the picked point into THIS device's own
  * $persistentStore, using the exact keys location-spoofer.js already reads via
  * enrichArgsFromPluginStore: `latitude`, `longitude`, `altitude`, `enabled`.
@@ -11,9 +11,9 @@
  * never-picked → enabled=false → location-spoofer.js passes through the real location
  * (this pairs with DEFAULT_CONFIG.enabled=false in location-spoofer.js).
  *
- *   GET …/ils-settings/save?lat=&lon=&alt=   → store coords (+altitude) and enable
- *   GET …/ils-settings/save?action=query      → return the device's current stored point
- *   GET …/ils-settings/save?action=clear      → enabled=false (restore real location)
+ *   GET …/wloc-settings/save?lat=&lon=&alt=   → store coords (+altitude) and enable
+ *   GET …/wloc-settings/save?action=query      → return the device's current stored point
+ *   GET …/wloc-settings/save?action=clear      → enabled=false (restore real location)
  *
  * Supported clients: Surge / Shadowrocket / Loon / Stash / Egern ($persistentStore) and
  * Quantumult X ($prefs).
